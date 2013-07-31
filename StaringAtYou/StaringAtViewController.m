@@ -7,6 +7,7 @@
 //
 
 #import "StaringAtViewController.h"
+#import "LoginViewController.h"
 
 @interface StaringAtViewController ()
 
@@ -17,7 +18,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    LoginViewController *loginViewController = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+    
+    [self.view addSubview:loginViewController.view];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
