@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ShareSDK/ShareSDK.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApi.h>
 
 @class StaringAtViewController;
 
 @interface StaringAtAppDelegate : UIResponder <UIApplicationDelegate>
+{
+ 
+
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

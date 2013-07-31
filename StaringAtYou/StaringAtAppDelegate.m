@@ -8,12 +8,26 @@
 
 #import "StaringAtAppDelegate.h"
 #import "StaringAtViewController.h"
-#import <ShareSDK/ShareSDK.h>
+
+
+#define SHARE_SDK_APP_KEY @"6977b095830"
+
+#define SINA_APP_KEY     @"995864879"
+#define SINA_APP_SECRET  @"2e86f89fdbc3f0d8e782fbea57e10c40"
+#define QQ_APP_KEY       @"100494247"
+#define QQ_APP_SECRET    @"663e9aad7d03b7d457a87944460e56fc"
+
 
 @implementation StaringAtAppDelegate
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Share
+    [ShareSDK registerApp:SHARE_SDK_APP_KEY];
+    [ShareSDK convertUrlEnabled:NO];
+    [self initializePlat];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[StaringAtViewController alloc] initWithNibName:@"StaringAtViewController" bundle:nil];
@@ -22,6 +36,9 @@
     
     //隐藏电池
     [application setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    
+  
+
     return YES;
 }
 
@@ -52,4 +69,65 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark -  
+//授权
+- (void)initializePlat
+{
+    //添加新浪微博应用
+    [ShareSDK connectSinaWeiboWithAppKey:SINA_APP_KEY
+                               appSecret:SINA_APP_SECRET
+                             redirectUri:@"http://appgo.cn"];
+    /**
+     连接QQ空间应用以使用相关功能，此应用需要引用QZoneConnection.framework
+     http://connect.qq.com/intro/login/上申请加入QQ登录，并将相关信息填写到以下字段
+     
+     如果需要实现SSO，需要导入TencentOpenAPI.framework,并引入QQApiInterface.h和TencentOAuth.h，将QQApiInterface和TencentOAuth的类型传入接口
+     **/
+    [ShareSDK connectQZoneWithAppKey:@"100371282"
+                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"
+                   qqApiInterfaceCls:[QQApiInterface class]
+                     tencentOAuthCls:[TencentOAuth class]];
+    //QQ应用
+    [ShareSDK connectQQWithAppId:@"100371282" qqApiCls:[QQApi class]];
+
+//    
+//    //添加网易微博应用
+//    [ShareSDK connect163WeiboWithAppKey:@"T5EI7BXe13vfyDuy"
+//                              appSecret:@"gZxwyNOvjFYpxwwlnuizHRRtBRZ2lV1j"
+//                            redirectUri:@"http://www.shareSDK.cn"];
+//    
+//    //添加搜狐微博应用
+//    [ShareSDK connectSohuWeiboWithConsumerKey:@"SAfmTG1blxZY3HztESWx"
+//                               consumerSecret:@"yfTZf)!rVwh*3dqQuVJVsUL37!F)!yS9S!Orcsij"
+//                                  redirectUri:@"http://www.sharesdk.cn"];
+//    
+//    //添加豆瓣应用
+//    [ShareSDK connectDoubanWithAppKey:@"07d08fbfc1210e931771af3f43632bb9"
+//                            appSecret:@"e32896161e72be91"
+//                          redirectUri:@"http://dev.kumoway.com/braininference/infos.php"];
+//    
+//    //添加人人网应用
+//    [ShareSDK connectRenRenWithAppKey:@"fc5b8aed373c4c27a05b712acba0f8c3"
+//                            appSecret:@"f29df781abdd4f49beca5a2194676ca4"];
+}
+
+//使用SSO授权方式（即跳转到相应客户端进行授权的方式）
+- (BOOL)application:(UIApplication *)application
+      handleOpenURL:(NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
+}
+
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString  *)sourceApplication
+         annotation:(id)annotation
+{
+    return [ShareSDK handleOpenURL:url
+                 sourceApplication:sourceApplication
+                        annotation:annotation
+                        wxDelegate:self];
+}
 @end

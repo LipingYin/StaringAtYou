@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
+{
+    @private
+    NSMutableArray *_shareTypeArray;
+}
+@property (strong, nonatomic) IBOutlet UIButton *sinaButton;
+@property (strong, nonatomic) IBOutlet UIButton *qqButton;
+@property (strong, nonatomic) IBOutlet UIButton *renrenButton;
+@property (strong, nonatomic) IBOutlet UIButton *doubanButton;
 
 -(IBAction)sinaBtnPress:(id)sender;
 -(IBAction)qqBtnPress:(id)sender;

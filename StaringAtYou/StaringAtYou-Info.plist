@@ -26,6 +26,18 @@
 	<true/>
 	<key>UIStatusBarHidden</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>2e86f89fdbc3f0d8e782fbea57e10c40</string>
+				<string>663e9aad7d03b7d457a87944460e56fc</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
