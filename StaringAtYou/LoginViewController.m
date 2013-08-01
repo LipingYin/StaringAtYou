@@ -121,6 +121,7 @@
                                        
                                        if (0==[error errorCode]) {
                                             _sinaLoginStatus = YES;
+                                           [self removeFromParentViewController];
                                        }
                                        
                                    }];
