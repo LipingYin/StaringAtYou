@@ -15,7 +15,10 @@
 @end
 
 @implementation LoginViewController
-
+@synthesize sinaButton = _sinaButton;
+@synthesize qqButton = _qqButton;
+@synthesize renrenButton = _renrenButton;
+@synthesize doubanButton = _doubanButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -70,6 +73,7 @@
 }
 
 #pragma mark- buttonPress functions
+
 
 -(IBAction)sinaBtnPress:(UIButton *)sender
 {

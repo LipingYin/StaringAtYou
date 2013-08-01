@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "LoginViewController.h"
+
 @interface StaringAtViewController : UIViewController
+
+@property (strong, nonatomic) LoginViewController *loginViewController;
 
 @end

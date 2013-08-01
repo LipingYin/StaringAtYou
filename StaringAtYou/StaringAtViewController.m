@@ -14,16 +14,16 @@
 @end
 
 @implementation StaringAtViewController
+@synthesize loginViewController = _loginViewController;
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
-    LoginViewController *loginViewController = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+    self.loginViewController = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
     
-    [self.view addSubview:loginViewController.view];
-    
-    
+    [self.view addSubview:self.loginViewController.view];        
 }
 
 - (void)didReceiveMemoryWarning
