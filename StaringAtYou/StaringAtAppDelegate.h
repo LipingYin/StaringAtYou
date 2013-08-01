@@ -15,10 +15,7 @@
 @class StaringAtViewController;
 
 @interface StaringAtAppDelegate : UIResponder <UIApplicationDelegate>
-{
- 
 
-}
 
 @property (strong, nonatomic) UIWindow *window;
 
