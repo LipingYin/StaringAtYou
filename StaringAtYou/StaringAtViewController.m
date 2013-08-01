@@ -15,6 +15,7 @@
 
 @implementation StaringAtViewController
 @synthesize loginViewController = _loginViewController;
+@synthesize sinaUserName;
 
 
 - (void)viewDidLoad
@@ -23,7 +24,9 @@
 	
     self.loginViewController = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
     
-    [self.view addSubview:self.loginViewController.view];        
+    [self.view addSubview:self.loginViewController.view];
+    
+    self.sinaUserName.text = @"尚未授权";
 }
 
 - (void)didReceiveMemoryWarning

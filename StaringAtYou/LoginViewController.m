@@ -9,7 +9,9 @@
 #import "LoginViewController.h"
 #import "StaringAtAppDelegate.h"
 
-#define BASE_TAG 100
+#define BASE_TAG 101
+
+
 @interface LoginViewController ()
 
 @end
@@ -24,6 +26,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
+        
         //监听用户信息变更
         [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
                                    target:self
@@ -81,10 +85,12 @@
     
     NSInteger index = sender.tag - BASE_TAG;
     
-    if (index < [_shareTypeArray count])
-    {
-        NSMutableDictionary *item = [_shareTypeArray objectAtIndex:index];
-            //用户用户信息
+    NSMutableDictionary *item = [_shareTypeArray objectAtIndex:index];
+
+    if (!_sinaLoginStatus) {
+        if (index < [_shareTypeArray count])
+        {
+                       //用户用户信息
             ShareType type = [[item objectForKey:@"type"] integerValue];
             
             id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -106,25 +112,38 @@
                                    result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                        if (result)
                                        {
+                                          
                                            [item setObject:[userInfo nickname] forKey:@"username"];
                                            [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
+                                           
                                        }
                                        NSLog(@"%d:%@",[error errorCode], [error errorDescription]);
-                                      
+                                       
+                                       if (0==[error errorCode]) {
+                                            _sinaLoginStatus = YES;
+                                       }
+                                       
                                    }];
-            //取消授权
-//            [ShareSDK cancelAuthWithType:[[item objectForKey:@"type"] integerValue]];
-//            [_tableView reloadData];
-        
+            
+       }        
         
     }
+    else
+    {
+        //取消授权
+        NSLog(@"取消授权");
+        [ShareSDK cancelAuthWithType:[[item objectForKey:@"type"] integerValue]];
+        _sinaLoginStatus = NO;
+    }
+
 
 
 }
 
 -(IBAction)qqBtnPress:(id)sender
 {
-    NSLog(@"qq");
+    
+
 }
 
 -(IBAction)renrenBtnPress:(id)sender

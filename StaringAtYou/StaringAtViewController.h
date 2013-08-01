@@ -13,5 +13,5 @@
 @interface StaringAtViewController : UIViewController
 
 @property (strong, nonatomic) LoginViewController *loginViewController;
-
+@property (strong, nonatomic) IBOutlet UILabel *sinaUserName;
 @end

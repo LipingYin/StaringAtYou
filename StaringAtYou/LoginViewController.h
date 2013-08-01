@@ -10,8 +10,12 @@
 
 @interface LoginViewController : UIViewController
 {
-    @private
+    //Status
+    
+    BOOL _sinaLoginStatus;
+    BOOL _qqLoginStatus;
     NSMutableArray *_shareTypeArray;
+    
 }
 @property (strong, nonatomic) IBOutlet UIButton *sinaButton;
 @property (strong, nonatomic) IBOutlet UIButton *qqButton;

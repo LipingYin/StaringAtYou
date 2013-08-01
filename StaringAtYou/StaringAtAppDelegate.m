@@ -11,6 +11,7 @@
 
 
 #define SHARE_SDK_APP_KEY @"6977b095830"
+#define REDIRECT_URL      @"http://staringat.cn"
 
 #define SINA_APP_KEY     @"995864879"
 #define SINA_APP_SECRET  @"2e86f89fdbc3f0d8e782fbea57e10c40"
@@ -36,7 +37,7 @@
     [self.window makeKeyAndVisible];
     
     //隐藏电池
-    [application setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    [application setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
   
 
@@ -74,24 +75,28 @@
 //授权
 - (void)initializePlat
 {
-    //添加新浪微博应用
+    /**
+     连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
+     http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
+     **/
+ 
     [ShareSDK connectSinaWeiboWithAppKey:SINA_APP_KEY
                                appSecret:SINA_APP_SECRET
-                             redirectUri:@"http://appgo.cn"];
+                             redirectUri:REDIRECT_URL];
     /**
      连接QQ空间应用以使用相关功能，此应用需要引用QZoneConnection.framework
      http://connect.qq.com/intro/login/上申请加入QQ登录，并将相关信息填写到以下字段
      
      如果需要实现SSO，需要导入TencentOpenAPI.framework,并引入QQApiInterface.h和TencentOAuth.h，将QQApiInterface和TencentOAuth的类型传入接口
      **/
-    [ShareSDK connectQZoneWithAppKey:@"100371282"
-                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"
-                   qqApiInterfaceCls:[QQApiInterface class]
-                     tencentOAuthCls:[TencentOAuth class]];
-    //QQ应用
-    [ShareSDK connectQQWithAppId:@"100371282" qqApiCls:[QQApi class]];
-
-//    
+//    [ShareSDK connectQZoneWithAppKey:@"100371282"
+//                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"
+//                   qqApiInterfaceCls:[QQApiInterface class]
+//                     tencentOAuthCls:[TencentOAuth class]];
+//    //QQ应用
+//    [ShareSDK connectQQWithAppId:@"100371282" qqApiCls:[QQApi class]];
+//
+//
 //    //添加网易微博应用
 //    [ShareSDK connect163WeiboWithAppKey:@"T5EI7BXe13vfyDuy"
 //                              appSecret:@"gZxwyNOvjFYpxwwlnuizHRRtBRZ2lV1j"
