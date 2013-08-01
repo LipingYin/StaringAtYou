@@ -98,6 +98,12 @@
 		19F976A917A8E4430075DEE8 /* StaringAtViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StaringAtViewController.h; sourceTree = "<group>"; };
 		19F976AA17A8E4430075DEE8 /* StaringAtViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaringAtViewController.m; sourceTree = "<group>"; };
 		19F976AD17A8E4430075DEE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/StaringAtViewController.xib; sourceTree = "<group>"; };
+		5A72180817AAB1BC005FC85D /* IntroControll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroControll.h; sourceTree = "<group>"; };
+		5A72180917AAB1BC005FC85D /* IntroControll.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroControll.m; sourceTree = "<group>"; };
+		5A72180A17AAB1BC005FC85D /* IntroModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroModel.h; sourceTree = "<group>"; };
+		5A72180B17AAB1BC005FC85D /* IntroModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroModel.m; sourceTree = "<group>"; };
+		5A72180C17AAB1BC005FC85D /* IntroView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroView.h; sourceTree = "<group>"; };
+		5A72180D17AAB1BC005FC85D /* IntroView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroView.m; sourceTree = "<group>"; };
 		5AC74D0E17A94C590024E9B6 /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
 		5AC74D0F17A94C590024E9B6 /* EverNoteConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EverNoteConnection.framework; sourceTree = "<group>"; };
 		5AC74D1017A94C590024E9B6 /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
@@ -198,6 +204,7 @@
 		19F1E2F917AA5A0400426B26 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5A72180717AAB19D005FC85D /* IntroControll */,
 				19F1E2FA17AA5A1300426B26 /* Login */,
 				19F976A017A8E4430075DEE8 /* StaringAtAppDelegate.h */,
 				19F976A117A8E4430075DEE8 /* StaringAtAppDelegate.m */,
@@ -285,6 +292,19 @@
 				19F9769F17A8E4430075DEE8 /* StaringAtYou-Prefix.pch */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		5A72180717AAB19D005FC85D /* IntroControll */ = {
+			isa = PBXGroup;
+			children = (
+				5A72180817AAB1BC005FC85D /* IntroControll.h */,
+				5A72180917AAB1BC005FC85D /* IntroControll.m */,
+				5A72180A17AAB1BC005FC85D /* IntroModel.h */,
+				5A72180B17AAB1BC005FC85D /* IntroModel.m */,
+				5A72180C17AAB1BC005FC85D /* IntroView.h */,
+				5A72180D17AAB1BC005FC85D /* IntroView.m */,
+			);
+			name = IntroControll;
 			sourceTree = "<group>";
 		};
 		5AC74D0C17A94C590024E9B6 /* ShareSDK_v2.2.5 */ = {
