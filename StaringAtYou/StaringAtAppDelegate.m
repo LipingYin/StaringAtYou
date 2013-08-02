@@ -22,7 +22,7 @@
 @implementation StaringAtAppDelegate
 @synthesize window = _window;
 @synthesize  viewController = _viewController;
-
+@synthesize isSinaLogin;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //Share

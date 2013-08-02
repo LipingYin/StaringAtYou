@@ -7,16 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StaringAtAppDelegate.h"
+
+@protocol UserInfoDelegate <NSObject>
+
+-(void)passUserInfo:(NSMutableDictionary *)userInfo;
+
+@end
 
 @interface LoginViewController : UIViewController
 {
     //Status
-    
-    BOOL _sinaLoginStatus;
+    StaringAtAppDelegate *_myDelegate;
     BOOL _qqLoginStatus;
-    NSMutableArray *_shareTypeArray;
     
+    
+    NSMutableArray *_shareTypeArray;
+
 }
+@property (strong, nonatomic) StaringAtAppDelegate *myDelegate;
+@property (weak, nonatomic) id <UserInfoDelegate>  userInfoDelegate;
+
+
 @property (strong, nonatomic) IBOutlet UIButton *sinaButton;
 @property (strong, nonatomic) IBOutlet UIButton *qqButton;
 @property (strong, nonatomic) IBOutlet UIButton *renrenButton;

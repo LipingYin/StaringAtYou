@@ -10,8 +10,13 @@
 
 #import "LoginViewController.h"
 
-@interface StaringAtViewController : UIViewController
+@interface StaringAtViewController : UIViewController<UserInfoDelegate>
+{
+    StaringAtAppDelegate *_myDelegate;
+}
 
 @property (strong, nonatomic) LoginViewController *loginViewController;
 @property (strong, nonatomic) IBOutlet UILabel *sinaUserName;
+@property (strong, nonatomic) StaringAtAppDelegate *myDelegate;
+
 @end

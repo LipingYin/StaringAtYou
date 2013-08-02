@@ -21,12 +21,14 @@
 @synthesize qqButton = _qqButton;
 @synthesize renrenButton = _renrenButton;
 @synthesize doubanButton = _doubanButton;
+@synthesize  myDelegate;
+@synthesize userInfoDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+        _myDelegate = [[UIApplication sharedApplication] delegate];
         
         //监听用户信息变更
         [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
@@ -76,6 +78,30 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated;
+{
+    if (_myDelegate.isSinaLogin) {
+        [self.view removeFromSuperview];
+    }
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+
+}
+
+
 #pragma mark- buttonPress functions
 
 
@@ -87,7 +113,7 @@
     
     NSMutableDictionary *item = [_shareTypeArray objectAtIndex:index];
 
-    if (!_sinaLoginStatus) {
+    if (!_myDelegate.isSinaLogin) {
         if (index < [_shareTypeArray count])
         {
                        //用户用户信息
@@ -106,25 +132,27 @@
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                             SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                             nil]];
+            //授权成功
+            _myDelegate.isSinaLogin = YES;
+          
             
             [ShareSDK getUserInfoWithType:type
                               authOptions:authOptions
                                    result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                     
                                        if (result)
                                        {
-                                          
+                                         
                                            [item setObject:[userInfo nickname] forKey:@"username"];
                                            [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
+                                             [self.userInfoDelegate passUserInfo:item];
                                            
                                        }
                                        NSLog(@"%d:%@",[error errorCode], [error errorDescription]);
                                        
-                                       if (0==[error errorCode]) {
-                                            _sinaLoginStatus = YES;
-                                           [self removeFromParentViewController];
-                                       }
-                                       
+                                                                             
                                    }];
+            
             
        }        
         
@@ -134,7 +162,7 @@
         //取消授权
         NSLog(@"取消授权");
         [ShareSDK cancelAuthWithType:[[item objectForKey:@"type"] integerValue]];
-        _sinaLoginStatus = NO;
+        _myDelegate.isSinaLogin = NO;
     }
 
 
