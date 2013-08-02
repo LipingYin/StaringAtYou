@@ -14,3 +14,14 @@
 #endif
 
 #define UserLoginNotification			@"UserLoginNotification"
+
+
+#define KEY_IS_LOGIN    @"isLogin"
+
+#define KEY_MY_INFO     @"myInfo"
+#define KEY_MY_NAME     @"myName"
+#define DEFAULT_MY_NAME @"陌生人"
+
+
+#define VALUE_LOGIN     @"login"
+#define VALUE_LOGOUT    @"logout"

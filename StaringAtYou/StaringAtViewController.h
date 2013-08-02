@@ -10,15 +10,15 @@
 
 #import "LoginViewController.h"
 
-@interface StaringAtViewController : UIViewController<UserInfoDelegate>
+@interface StaringAtViewController : UIViewController
 {
-    StaringAtAppDelegate *_myDelegate;
+    //StaringAtAppDelegate *_myDelegate;
 }
 
 @property (strong, nonatomic) LoginViewController *loginViewController;
 @property (strong, nonatomic) IBOutlet UILabel *sinaUserName;
 @property (strong, nonatomic) IBOutlet UIButton *quitSinaButton;
-@property (strong, nonatomic) StaringAtAppDelegate *myDelegate;
+//@property (strong, nonatomic) StaringAtAppDelegate *myDelegate;
 
 
 -(IBAction)quitSinaLogin:(id)sender;

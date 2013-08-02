@@ -22,14 +22,12 @@
 @synthesize qqButton = _qqButton;
 @synthesize renrenButton = _renrenButton;
 @synthesize doubanButton = _doubanButton;
-@synthesize  myDelegate;
-@synthesize userInfoDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _myDelegate = [[UIApplication sharedApplication] delegate];
+        //_myDelegate = [[UIApplication sharedApplication] delegate];
         
         //监听用户信息变更
         [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
@@ -96,7 +94,9 @@
 
 - (void)viewDidAppear:(BOOL)animated;
 {
-    if (_myDelegate.isSinaLogin) {
+    NSUserDefaults *allUserInfo = [NSUserDefaults standardUserDefaults];
+    NSString *isLogin = [allUserInfo objectForKey:KEY_IS_LOGIN];
+    if ([isLogin isEqualToString:VALUE_LOGIN]) {
         [self.view removeFromSuperview];
     }
 
@@ -148,8 +148,10 @@
     NSInteger index = TAG_BUTTON_SINA - BASE_TAG;
     
     NSMutableDictionary *item = [_shareTypeArray objectAtIndex:index];
+    NSUserDefaults *allUserInfo = [NSUserDefaults standardUserDefaults];
+    NSString *isLogin = [allUserInfo objectForKey:KEY_IS_LOGIN];
     
-    if (!_myDelegate.isSinaLogin) {
+    if ([isLogin isEqualToString:VALUE_LOGOUT]|!isLogin) {
         if (index < [_shareTypeArray count])
         {
             //用户用户信息
@@ -173,18 +175,24 @@
                               authOptions:authOptions
                                    result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                        
+                                       
                                        if (result)
                                        {
-                                           
+                                          
                                            [item setObject:[userInfo nickname] forKey:@"username"];
                                            [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
-                                           [self.userInfoDelegate passUserInfo:item];
+                                           
+                                          // [self.userInfoDelegate passUserInfo:item];
+                                            NSUserDefaults *alluserInfo = [NSUserDefaults standardUserDefaults];
+                                            [alluserInfo setObject:item forKey:KEY_MY_INFO];
+                                           
                                            
                                        }
                                        NSLog(@"%d:%@",[error errorCode], [error errorDescription]);
                                        
                                        if (0==[error errorCode]) {
-                                           _myDelegate.isSinaLogin = YES;
+                                           NSUserDefaults *alluserInfo = [NSUserDefaults standardUserDefaults];
+                                           [alluserInfo setObject:VALUE_LOGIN forKey:KEY_IS_LOGIN];
                                            [self.view removeFromSuperview];
                                            
                                        }

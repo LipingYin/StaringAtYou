@@ -16,13 +16,13 @@
 
 @interface StaringAtAppDelegate : UIResponder <UIApplicationDelegate>
 {
-    BOOL _isSinaLogin;
+//    BOOL _isSinaLogin;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) StaringAtViewController *viewController;
 
-@property (assign, nonatomic) BOOL isSinaLogin;
+//@property (assign, nonatomic) BOOL isSinaLogin;
 
 @end
