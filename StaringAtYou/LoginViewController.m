@@ -9,7 +9,8 @@
 #import "LoginViewController.h"
 #import "StaringAtAppDelegate.h"
 
-#define BASE_TAG 101
+#define BASE_TAG 100
+#define TAG_BUTTON_SINA 100
 
 
 @interface LoginViewController ()
@@ -61,9 +62,19 @@
                             @"type",
                             nil],
                            nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(sinaLogin)
+                                                     name:UserLoginNotification
+                                                   object:nil];
 
     }
     return self;
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UserLoginNotification object:nil];
 }
 
 - (void)viewDidLoad
@@ -107,66 +118,8 @@
 
 -(IBAction)sinaBtnPress:(UIButton *)sender
 {
-    //StaringAtAppDelegate *appDelegate = (StaringAtAppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    NSInteger index = sender.tag - BASE_TAG;
-    
-    NSMutableDictionary *item = [_shareTypeArray objectAtIndex:index];
-
-    if (!_myDelegate.isSinaLogin) {
-        if (index < [_shareTypeArray count])
-        {
-                       //用户用户信息
-            ShareType type = [[item objectForKey:@"type"] integerValue];
-            
-            id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
-                                                                 allowCallback:YES
-                                                                 authViewStyle:SSAuthViewStyleFullScreenPopup
-                                                                  viewDelegate:nil
-                                                       authManagerViewDelegate:nil];
-            
-            //在授权页面中添加关注官方微博
-            [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                            [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                            SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                            [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                            SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
-                                            nil]];
-            //授权成功
-            _myDelegate.isSinaLogin = YES;
-          
-            
-            [ShareSDK getUserInfoWithType:type
-                              authOptions:authOptions
-                                   result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
-                                     
-                                       if (result)
-                                       {
-                                         
-                                           [item setObject:[userInfo nickname] forKey:@"username"];
-                                           [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
-                                             [self.userInfoDelegate passUserInfo:item];
-                                           
-                                       }
-                                       NSLog(@"%d:%@",[error errorCode], [error errorDescription]);
-                                       
-                                                                             
-                                   }];
-            
-            
-       }        
-        
-    }
-    else
-    {
-        //取消授权
-        NSLog(@"取消授权");
-        [ShareSDK cancelAuthWithType:[[item objectForKey:@"type"] integerValue]];
-        _myDelegate.isSinaLogin = NO;
-    }
-
-
-
+    sender.tag = TAG_BUTTON_SINA;
+    [self sinaLogin];
 }
 
 -(IBAction)qqBtnPress:(id)sender
@@ -183,6 +136,68 @@
 -(IBAction)doubanBtnPress:(id)sender
 {
     NSLog(@"douban");
+}
+
+
+#pragma mark - private methods
+
+-(void)sinaLogin
+{
+    //StaringAtAppDelegate *appDelegate = (StaringAtAppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSInteger index = TAG_BUTTON_SINA - BASE_TAG;
+    
+    NSMutableDictionary *item = [_shareTypeArray objectAtIndex:index];
+    
+    if (!_myDelegate.isSinaLogin) {
+        if (index < [_shareTypeArray count])
+        {
+            //用户用户信息
+            ShareType type = [[item objectForKey:@"type"] integerValue];
+            
+            id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                                 allowCallback:YES
+                                                                 authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                                  viewDelegate:nil
+                                                       authManagerViewDelegate:nil];
+            
+            //在授权页面中添加关注官方微博
+            [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                            SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                            [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                            SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                            nil]];
+            
+            [ShareSDK getUserInfoWithType:type
+                              authOptions:authOptions
+                                   result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                       
+                                       if (result)
+                                       {
+                                           
+                                           [item setObject:[userInfo nickname] forKey:@"username"];
+                                           [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
+                                           [self.userInfoDelegate passUserInfo:item];
+                                           
+                                       }
+                                       NSLog(@"%d:%@",[error errorCode], [error errorDescription]);
+                                       
+                                       if (0==[error errorCode]) {
+                                           _myDelegate.isSinaLogin = YES;
+                                           [self.view removeFromSuperview];
+                                           
+                                       }
+                                       
+                                   }];
+            
+        }
+        
+    }
+    else
+    {
+    }
+    
 }
 
 - (void)userInfoUpdateHandler:(NSNotification *)notif

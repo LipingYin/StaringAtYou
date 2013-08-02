@@ -17,6 +17,9 @@
 
 @property (strong, nonatomic) LoginViewController *loginViewController;
 @property (strong, nonatomic) IBOutlet UILabel *sinaUserName;
+@property (strong, nonatomic) IBOutlet UIButton *quitSinaButton;
 @property (strong, nonatomic) StaringAtAppDelegate *myDelegate;
 
+
+-(IBAction)quitSinaLogin:(id)sender;
 @end

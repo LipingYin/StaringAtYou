@@ -23,25 +23,46 @@
 {
     [super viewDidLoad];
     
-    self.sinaUserName.text = @"尚未授权";
-    
-    
     _myDelegate = [[UIApplication sharedApplication] delegate];
-    if (!_myDelegate.isSinaLogin) {
+    
+   _myDelegate.isSinaLogin = [ShareSDK hasAuthorizedWithType:ShareTypeSinaWeibo];
+    if (_myDelegate.isSinaLogin) {
+        
+         self.sinaUserName.text = @"已经授权";
+        
+    }else
+    {
         self.loginViewController = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
         [self.view addSubview:self.loginViewController.view];
         
         self.loginViewController.userInfoDelegate = self;
+        //self.sinaUserName.text = @"尚未授权";
     }
-    
-    
-   
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Quit
+-(IBAction)quitSinaLogin:(id)sender
+{
+    //取消授权
+    NSLog(@"取消授权");
+    NSMutableDictionary *item = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+     @"新浪微博",
+     @"title",
+     [NSNumber numberWithInteger:ShareTypeSinaWeibo],
+                                  @"type",nil];
+    
+    [ShareSDK cancelAuthWithType:[[item objectForKey:@"type"] integerValue]];
+    _myDelegate.isSinaLogin = NO;
+    self.sinaUserName.text = @"尚未授权";
+
+
 }
 
 #pragma mark - UserInfoDelegate
