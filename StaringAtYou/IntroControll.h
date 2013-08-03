@@ -14,7 +14,7 @@
     int currentPhotoNum;
 }
 
-- (id)initWithFrame:(CGRect)frame pages:(NSArray*)pages;
+- (id)initWithFrame:(CGRect)frame pages:(NSArray*)pagesArray;
 
 
 @end

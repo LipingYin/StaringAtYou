@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "StaringAtYou/StaringAtViewController.m"
-         timestampString = "397156342.1521"
+         timestampString = "397236005.641377"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "81"
-         endingLineNumber = "81"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
          landmarkName = "-quitSinaLogin:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "StaringAtYou/LoginViewController.m"
-         timestampString = "397154100.926334"
+         timestampString = "397229022.06055"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "156"
-         endingLineNumber = "156"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
          landmarkName = "-sinaLogin"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "StaringAtYou/LoginViewController.m"
-         timestampString = "397154061.788004"
+         timestampString = "397229022.06055"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "101"
-         endingLineNumber = "101"
+         startingLineNumber = "99"
+         endingLineNumber = "99"
          landmarkName = "-viewDidAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "StaringAtYou/StaringAtViewController.m"
-         timestampString = "397156346.326342"
+         timestampString = "397236005.641377"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>

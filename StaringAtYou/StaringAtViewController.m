@@ -9,6 +9,7 @@
 #import "StaringAtAppDelegate.h"
 #import "StaringAtViewController.h"
 #import "LoginViewController.h"
+#import "StaringView.h"
 
 @interface StaringAtViewController ()
 
@@ -24,6 +25,13 @@
     [super viewDidLoad];
     
     //_myDelegate = [[UIApplication sharedApplication] delegate];
+    
+//    NSArray *array = [[NSArray alloc] initWithObjects:@"One",@"Two",nil];
+//    _mainView = [[MainView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+//                                          pages:array];
+//    
+//    [self.view addSubview:_mainView];
+
     
    
 }
@@ -96,6 +104,11 @@
    
 }
 
+-(IBAction)addStare:(id)sender
+{
+    StaringView *staringView = [[StaringView alloc]initWithFrame:CGRectMake(0, 44, 320, 480-44) style:UITableViewStylePlain];
+    [self.view addSubview:staringView];
+}
 //#pragma mark - UserInfoDelegate
 //-(void)passUserInfo:(NSMutableDictionary *)userInfo
 //{

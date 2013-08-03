@@ -28,6 +28,10 @@
 		19F976A817A8E4430075DEE8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F976A717A8E4430075DEE8 /* Default-568h@2x.png */; };
 		19F976AB17A8E4430075DEE8 /* StaringAtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F976AA17A8E4430075DEE8 /* StaringAtViewController.m */; };
 		19F976AE17A8E4430075DEE8 /* StaringAtViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19F976AC17A8E4430075DEE8 /* StaringAtViewController.xib */; };
+		5A9AB29217ACC491002AA274 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9AB29117ACC491002AA274 /* MainView.m */; };
+		5A9AB29617ACD272002AA274 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9AB29517ACD272002AA274 /* SettingView.m */; };
+		5A9AB29A17ACD2A5002AA274 /* StaringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9AB29917ACD2A5002AA274 /* StaringView.m */; };
+		5A9AB29C17AD135F002AA274 /* shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9AB29B17AD135F002AA274 /* shadow@2x.png */; };
 		5AC74D3F17A94C590024E9B6 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AC74D0E17A94C590024E9B6 /* DouBanConnection.framework */; };
 		5AC74D4017A94C590024E9B6 /* EverNoteConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AC74D0F17A94C590024E9B6 /* EverNoteConnection.framework */; };
 		5AC74D4117A94C590024E9B6 /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AC74D1017A94C590024E9B6 /* FacebookConnection.framework */; };
@@ -104,6 +108,13 @@
 		5A72180B17AAB1BC005FC85D /* IntroModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroModel.m; sourceTree = "<group>"; };
 		5A72180C17AAB1BC005FC85D /* IntroView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroView.h; sourceTree = "<group>"; };
 		5A72180D17AAB1BC005FC85D /* IntroView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroView.m; sourceTree = "<group>"; };
+		5A9AB29017ACC491002AA274 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
+		5A9AB29117ACC491002AA274 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
+		5A9AB29417ACD272002AA274 /* SettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
+		5A9AB29517ACD272002AA274 /* SettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
+		5A9AB29817ACD2A5002AA274 /* StaringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaringView.h; sourceTree = "<group>"; };
+		5A9AB29917ACD2A5002AA274 /* StaringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaringView.m; sourceTree = "<group>"; };
+		5A9AB29B17AD135F002AA274 /* shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shadow@2x.png"; sourceTree = "<group>"; };
 		5AC74D0E17A94C590024E9B6 /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
 		5AC74D0F17A94C590024E9B6 /* EverNoteConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EverNoteConnection.framework; sourceTree = "<group>"; };
 		5AC74D1017A94C590024E9B6 /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
@@ -204,6 +215,9 @@
 		19F1E2F917AA5A0400426B26 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5A9AB29717ACD28F002AA274 /* StareView */,
+				5A9AB29317ACD097002AA274 /* SettingView */,
+				5A9AB28F17ACC40D002AA274 /* ScrollView */,
 				5A72180717AAB19D005FC85D /* IntroControll */,
 				19F1E2FA17AA5A1300426B26 /* Login */,
 				19F976A017A8E4430075DEE8 /* StaringAtAppDelegate.h */,
@@ -230,6 +244,7 @@
 		19F1E2FB17AA5A3500426B26 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5A9AB29B17AD135F002AA274 /* shadow@2x.png */,
 				19F976A317A8E4430075DEE8 /* Default.png */,
 				19F976A517A8E4430075DEE8 /* Default@2x.png */,
 				19F976A717A8E4430075DEE8 /* Default-568h@2x.png */,
@@ -305,6 +320,33 @@
 				5A72180D17AAB1BC005FC85D /* IntroView.m */,
 			);
 			name = IntroControll;
+			sourceTree = "<group>";
+		};
+		5A9AB28F17ACC40D002AA274 /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				5A9AB29017ACC491002AA274 /* MainView.h */,
+				5A9AB29117ACC491002AA274 /* MainView.m */,
+			);
+			name = ScrollView;
+			sourceTree = "<group>";
+		};
+		5A9AB29317ACD097002AA274 /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				5A9AB29417ACD272002AA274 /* SettingView.h */,
+				5A9AB29517ACD272002AA274 /* SettingView.m */,
+			);
+			name = SettingView;
+			sourceTree = "<group>";
+		};
+		5A9AB29717ACD28F002AA274 /* StareView */ = {
+			isa = PBXGroup;
+			children = (
+				5A9AB29817ACD2A5002AA274 /* StaringView.h */,
+				5A9AB29917ACD2A5002AA274 /* StaringView.m */,
+			);
+			name = StareView;
 			sourceTree = "<group>";
 		};
 		5AC74D0C17A94C590024E9B6 /* ShareSDK_v2.2.5 */ = {
@@ -470,6 +512,7 @@
 				5AC74D5F17A94C590024E9B6 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				5AC74D6217A94C590024E9B6 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				5AC74D6417A94C590024E9B6 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
+				5A9AB29C17AD135F002AA274 /* shadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +528,9 @@
 				19F976AB17A8E4430075DEE8 /* StaringAtViewController.m in Sources */,
 				19DE9C0A17A8EEB50012E4B2 /* LoginViewController.m in Sources */,
 				19F1E2F817AA488200426B26 /* UserLoginView.m in Sources */,
+				5A9AB29217ACC491002AA274 /* MainView.m in Sources */,
+				5A9AB29617ACD272002AA274 /* SettingView.m in Sources */,
+				5A9AB29A17ACD2A5002AA274 /* StaringView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
