@@ -6,7 +6,7 @@ build/*
 *.swp
  
 # Exclude OS X folder attributes
-.DS_Store
+
  
 # Exclude user-specific XCode 3 and 4 files
 *.mode1
@@ -22,7 +22,7 @@ build/*
 *.xcworkspace
 !default.xcworkspace
 !project.xcworkspace
-xcuserdata
+
 profile
 *.moved-aside
 DerivedData
