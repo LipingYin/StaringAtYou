@@ -21,9 +21,13 @@
 @property (strong, nonatomic) IBOutlet UILabel *sinaUserName;
 @property (strong, nonatomic) IBOutlet UIButton *quitSinaButton;
 @property (strong, nonatomic) IBOutlet UIButton *addStareButton;
+@property (strong, nonatomic) IBOutlet UIImageView *headView;
+@property (strong, nonatomic) IBOutlet UIImageView *myHeadImageView;
+@property (strong, nonatomic) IBOutlet UIButton *settingButton;
 //@property (strong, nonatomic) StaringAtAppDelegate *myDelegate;
 
 
 -(IBAction)quitSinaLogin:(id)sender;
 -(IBAction)addStare:(id)sender;
+-(IBAction)setting:(id)sender;
 @end

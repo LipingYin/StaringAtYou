@@ -35,6 +35,7 @@
     self.viewController = [[StaringAtViewController alloc] initWithNibName:@"StaringAtViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+
     
     //隐藏电池
     [application setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];

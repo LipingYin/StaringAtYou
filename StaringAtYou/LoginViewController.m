@@ -178,13 +178,17 @@
                                        
                                        if (result)
                                        {
-                                          
+                                           if ([userInfo icon]) {
+                                               [NSThread detachNewThreadSelector:@selector(loadImage:)
+                                                                        toTarget:self
+                                                                      withObject:[userInfo icon]];
+                                           }
                                            [item setObject:[userInfo nickname] forKey:@"username"];
                                            [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
                                            
                                           // [self.userInfoDelegate passUserInfo:item];
                                             NSUserDefaults *alluserInfo = [NSUserDefaults standardUserDefaults];
-                                            [alluserInfo setObject:item forKey:KEY_MY_INFO];
+                                            [alluserInfo setObject:item forKey:KEY_MY_SINA_INFO];
                                            
                                            
                                        }
@@ -266,4 +270,26 @@
     [authList writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
 }
 
+- (void)loadImage:(NSString *)url
+{
+
+//    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+//    [self performSelectorOnMainThread:@selector(showUserIcon:) withObject:image waitUntilDone:NO];
+//    
+    NSUserDefaults *alluserInfo = [NSUserDefaults standardUserDefaults];
+    [alluserInfo setObject:url forKey:KEY_MY_HEADIMAGE_URL];
+
+}
+
+- (void)showUserIcon:(UIImage *)icon
+{
+    if (icon)
+    {
+//        UIImageView *imageView = [[[UIImageView alloc] initWithImage:icon] autorelease];
+//        imageView.frame = CGRectMake(0.0, 0.0, _tableView.width, imageView.height * _tableView.width / imageView.width);
+//        _tableView.tableHeaderView = imageView;
+
+    
+    }
+}
 @end

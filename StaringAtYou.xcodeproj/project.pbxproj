@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		193D28DF17AF8B1C00ADF6E6 /* headView.png in Resources */ = {isa = PBXBuildFile; fileRef = 193D28DE17AF8B1C00ADF6E6 /* headView.png */; };
+		193D28E117AF8DB500ADF6E6 /* defaulthead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 193D28E017AF8DB500ADF6E6 /* defaulthead@2x.png */; };
+		193D28E317AF991800ADF6E6 /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 193D28E217AF991800ADF6E6 /* setting@2x.png */; };
 		19C741B517A90A16008BD933 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C741B417A90A16008BD933 /* SystemConfiguration.framework */; };
 		19C741B717A90A1F008BD933 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C741B617A90A1F008BD933 /* QuartzCore.framework */; };
 		19C741B917A90A37008BD933 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C741B817A90A37008BD933 /* libicucore.dylib */; };
@@ -74,6 +77,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		193D28DE17AF8B1C00ADF6E6 /* headView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headView.png; sourceTree = "<group>"; };
+		193D28E017AF8DB500ADF6E6 /* defaulthead@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaulthead@2x.png"; sourceTree = "<group>"; };
+		193D28E217AF991800ADF6E6 /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting@2x.png"; sourceTree = "<group>"; };
 		19C741B417A90A16008BD933 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		19C741B617A90A1F008BD933 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		19C741B817A90A37008BD933 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -244,6 +250,9 @@
 		19F1E2FB17AA5A3500426B26 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				193D28DE17AF8B1C00ADF6E6 /* headView.png */,
+				193D28E017AF8DB500ADF6E6 /* defaulthead@2x.png */,
+				193D28E217AF991800ADF6E6 /* setting@2x.png */,
 				5A9AB29B17AD135F002AA274 /* shadow@2x.png */,
 				19F976A317A8E4430075DEE8 /* Default.png */,
 				19F976A517A8E4430075DEE8 /* Default@2x.png */,
@@ -513,6 +522,9 @@
 				5AC74D6217A94C590024E9B6 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				5AC74D6417A94C590024E9B6 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				5A9AB29C17AD135F002AA274 /* shadow@2x.png in Resources */,
+				193D28DF17AF8B1C00ADF6E6 /* headView.png in Resources */,
+				193D28E117AF8DB500ADF6E6 /* defaulthead@2x.png in Resources */,
+				193D28E317AF991800ADF6E6 /* setting@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
