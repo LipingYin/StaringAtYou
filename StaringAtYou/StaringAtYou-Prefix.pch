@@ -18,18 +18,12 @@
 
 #define KEY_IS_LOGIN    @"isLogin"
 
-#define KEY_MY_INFO     @"myInfo"
-#define KEY_MY_NAME     @"myName"
+#define KEY_MY_SINA_INFO     @"mySinaInfo"
+//#define KEY_MY_NAME     @"myName"
+#define KEY_MY_HEADIMAGE_URL    @"myHeadSinaImageURL"
 #define DEFAULT_MY_NAME @"陌生人"
 
 
 #define VALUE_LOGIN     @"login"
 #define VALUE_LOGOUT    @"logout"
 
-#if !defined(MIN)
-#define MIN(A,B)	({ __typeof__(A) __a = (A); __typeof__(B) __b = (B); __a < __b ? __a : __b; })
-#endif
-
-#if !defined(MAX)
-#define MAX(A,B)	({ __typeof__(A) __a = (A); __typeof__(B) __b = (B); __a < __b ? __b : __a; })
-#endif
