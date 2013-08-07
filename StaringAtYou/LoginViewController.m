@@ -99,7 +99,6 @@
     if ([isLogin isEqualToString:VALUE_LOGIN]) {
         [self.view removeFromSuperview];
     }
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -171,10 +170,12 @@
                                             SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                             nil]];
             
+            NSUserDefaults *alluserInfo = [NSUserDefaults standardUserDefaults];
+            [alluserInfo setObject:VALUE_LOGIN forKey:KEY_IS_LOGIN];
             [ShareSDK getUserInfoWithType:type
                               authOptions:authOptions
                                    result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
-                                       
+           
                                        
                                        if (result)
                                        {
@@ -187,19 +188,19 @@
                                            [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
                                            
                                           // [self.userInfoDelegate passUserInfo:item];
-                                            NSUserDefaults *alluserInfo = [NSUserDefaults standardUserDefaults];
-                                            [alluserInfo setObject:item forKey:KEY_MY_SINA_INFO];
                                            
+                                            [alluserInfo setObject:item forKey:KEY_MY_SINA_INFO];
+                              
                                            
                                        }
                                        NSLog(@"%d:%@",[error errorCode], [error errorDescription]);
-                                       
-                                       if (0==[error errorCode]) {
-                                           NSUserDefaults *alluserInfo = [NSUserDefaults standardUserDefaults];
-                                           [alluserInfo setObject:VALUE_LOGIN forKey:KEY_IS_LOGIN];
-                                           [self.view removeFromSuperview];
-                                           
-                                       }
+//                                       
+//                                       if (0==[error errorCode]) {
+//                                           NSUserDefaults *alluserInfo = [NSUserDefaults standardUserDefaults];
+//                                           [alluserInfo setObject:VALUE_LOGIN forKey:KEY_IS_LOGIN];
+//                                           [self.view removeFromSuperview];
+//                                           
+//                                       }
                                        
                                    }];
             
@@ -273,9 +274,6 @@
 - (void)loadImage:(NSString *)url
 {
 
-//    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
-//    [self performSelectorOnMainThread:@selector(showUserIcon:) withObject:image waitUntilDone:NO];
-//    
     NSUserDefaults *alluserInfo = [NSUserDefaults standardUserDefaults];
     [alluserInfo setObject:url forKey:KEY_MY_HEADIMAGE_URL];
 

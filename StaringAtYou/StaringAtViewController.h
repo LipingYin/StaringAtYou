@@ -11,23 +11,15 @@
 #import "LoginViewController.h"
 #import "MainView.h"
 
-@interface StaringAtViewController : UIViewController
-{
-    //StaringAtAppDelegate *_myDelegate;
-    MainView *_mainView;
-}
+@interface StaringAtViewController : UIViewController<UITableViewDataSource,
+                                                     UITableViewDelegate>
 
 @property (strong, nonatomic) LoginViewController *loginViewController;
 @property (strong, nonatomic) IBOutlet UILabel *sinaUserName;
-@property (strong, nonatomic) IBOutlet UIButton *quitSinaButton;
-@property (strong, nonatomic) IBOutlet UIButton *addStareButton;
 @property (strong, nonatomic) IBOutlet UIImageView *headView;
 @property (strong, nonatomic) IBOutlet UIImageView *myHeadImageView;
 @property (strong, nonatomic) IBOutlet UIButton *settingButton;
-//@property (strong, nonatomic) StaringAtAppDelegate *myDelegate;
+@property (strong, nonatomic) IBOutlet UITableView *staringTableView;
 
-
--(IBAction)quitSinaLogin:(id)sender;
--(IBAction)addStare:(id)sender;
 -(IBAction)setting:(id)sender;
 @end
