@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 
 #import "LoginViewController.h"
-#import "MainView.h"
+
 
 @interface StaringAtViewController : UIViewController<UITableViewDataSource,
                                                      UITableViewDelegate>
+{
+    NSMutableArray *_items;
+    UIButton *_addButton;
+}
 
 @property (strong, nonatomic) LoginViewController *loginViewController;
 @property (strong, nonatomic) IBOutlet UILabel *sinaUserName;
@@ -20,6 +24,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *myHeadImageView;
 @property (strong, nonatomic) IBOutlet UIButton *settingButton;
 @property (strong, nonatomic) IBOutlet UITableView *staringTableView;
+
+@property (strong, nonatomic)  NSMutableArray *items;
 
 -(IBAction)setting:(id)sender;
 @end

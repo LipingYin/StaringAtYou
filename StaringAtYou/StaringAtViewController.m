@@ -9,7 +9,8 @@
 #import "StaringAtAppDelegate.h"
 #import "StaringAtViewController.h"
 #import "LoginViewController.h"
-#import "StaringView.h"
+#import "StaringAtCell.h"
+
 
 @interface StaringAtViewController ()
 
@@ -20,20 +21,34 @@
 @synthesize sinaUserName;
 @synthesize headView;
 @synthesize myHeadImageView;
-
+@synthesize staringTableView;
+@synthesize items;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     UITapGestureRecognizer *myHeadSingleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(myHeadSingleTap:)];
-    myHeadSingleTap.numberOfTouchesRequired = 1; //手指数
-    myHeadSingleTap.numberOfTapsRequired = 1; //tap次数
+    myHeadSingleTap.numberOfTouchesRequired = 1; 
+    myHeadSingleTap.numberOfTapsRequired = 1; 
     myHeadImageView.userInteractionEnabled = YES;
     [myHeadImageView addGestureRecognizer:myHeadSingleTap];
 
     UIImage *headImage = [UIImage imageNamed:@"headView.png"];
-    headView.image = headImage;    
+    headView.image = headImage;
+    
+    staringTableView.delegate = self;
+    staringTableView.dataSource = self;
+    
+    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:@"What time is it?", nil];
+    self.items = array;
+    
+
+    _addButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 5, 100, 33)];
+    [_addButton setTitle:@"Add" forState:UIControlStateNormal];
+    _addButton.backgroundColor = [UIColor redColor];
+    [_addButton addTarget:self action:@selector(addStaring:) forControlEvents:UIControlEventTouchUpInside];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,7 +116,6 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex==1) {
-        
         NSUserDefaults  *allUserInfo =  [NSUserDefaults standardUserDefaults];
         NSString *isLogin = [allUserInfo objectForKey:KEY_IS_LOGIN];
         
@@ -117,9 +131,11 @@
             NSUserDefaults  *allUserInfo =  [NSUserDefaults standardUserDefaults];
             [allUserInfo setObject:VALUE_LOGOUT forKey:KEY_IS_LOGIN];
             self.sinaUserName.text = DEFAULT_MY_NAME;
+            UIImage *defaultImage = [UIImage imageNamed:@"defaulthead.png"];
+            myHeadImageView.image = defaultImage;
            
         }
-        [self.view addSubview:self.loginViewController.view];
+      [self.view addSubview:self.loginViewController.view];
     }
     NSLog(@"clickedButtonAtIndex:%d",buttonIndex);
 }
@@ -130,4 +146,70 @@
 {
     
 }
+
+-(void)addStaring:(id)sender
+{
+    
+    [self.items insertObject:@"add staringat" atIndex:0];
+    
+    [self.staringTableView reloadData];
+}
+
+
+#pragma mark - tableView datesource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return  [self.items count]+1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CustomCellIdentifier = @"CustomCellIdentifier";
+    static BOOL nibsRegistered = NO;
+    if (!nibsRegistered) {
+        UINib *nib = [UINib nibWithNibName:@"StaringAtCell" bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:CustomCellIdentifier];
+        nibsRegistered = YES;
+    }
+    StaringAtCell *cell = [tableView dequeueReusableCellWithIdentifier:CustomCellIdentifier];
+    
+    if (indexPath.row != [self.items count])
+    {
+        UIImage *defaultImage = [UIImage imageNamed:@"defaulthead.png"];
+        myHeadImageView.image = defaultImage;
+        cell.nameLabel.text = @"我是XXXX";
+        cell.lastUpdateTimeLabel.text = @"最后更新时间是：6小时前";
+        cell.userStatusLabel.text = @"在线";
+        [_addButton removeFromSuperview];
+    }else
+    {
+      
+        [cell addSubview: _addButton];
+     
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    return cell;
+    
+}
+
+#pragma mark Table Delegate Methods
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80.0;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView
+  willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
+
+
 @end

@@ -10,6 +10,8 @@
 		193D28DF17AF8B1C00ADF6E6 /* headView.png in Resources */ = {isa = PBXBuildFile; fileRef = 193D28DE17AF8B1C00ADF6E6 /* headView.png */; };
 		193D28E117AF8DB500ADF6E6 /* defaulthead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 193D28E017AF8DB500ADF6E6 /* defaulthead@2x.png */; };
 		193D28E317AF991800ADF6E6 /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 193D28E217AF991800ADF6E6 /* setting@2x.png */; };
+		1955B2E917B360B600BF4AD1 /* StaringAtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1955B2E817B360B600BF4AD1 /* StaringAtCell.m */; };
+		1955B2EB17B360D800BF4AD1 /* StaringAtCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1955B2EA17B360D800BF4AD1 /* StaringAtCell.xib */; };
 		19C741B517A90A16008BD933 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C741B417A90A16008BD933 /* SystemConfiguration.framework */; };
 		19C741B717A90A1F008BD933 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C741B617A90A1F008BD933 /* QuartzCore.framework */; };
 		19C741B917A90A37008BD933 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C741B817A90A37008BD933 /* libicucore.dylib */; };
@@ -76,6 +78,9 @@
 		193D28DE17AF8B1C00ADF6E6 /* headView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headView.png; sourceTree = "<group>"; };
 		193D28E017AF8DB500ADF6E6 /* defaulthead@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaulthead@2x.png"; sourceTree = "<group>"; };
 		193D28E217AF991800ADF6E6 /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting@2x.png"; sourceTree = "<group>"; };
+		1955B2E717B360B600BF4AD1 /* StaringAtCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaringAtCell.h; sourceTree = "<group>"; };
+		1955B2E817B360B600BF4AD1 /* StaringAtCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaringAtCell.m; sourceTree = "<group>"; };
+		1955B2EA17B360D800BF4AD1 /* StaringAtCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaringAtCell.xib; sourceTree = "<group>"; };
 		19C741B417A90A16008BD933 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		19C741B617A90A1F008BD933 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		19C741B817A90A37008BD933 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -203,24 +208,19 @@
 		19F1E2F917AA5A0400426B26 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				19F1E2FA17AA5A1300426B26 /* Login */,
 				19F976A017A8E4430075DEE8 /* StaringAtAppDelegate.h */,
 				19F976A117A8E4430075DEE8 /* StaringAtAppDelegate.m */,
 				19F976A917A8E4430075DEE8 /* StaringAtViewController.h */,
 				19F976AA17A8E4430075DEE8 /* StaringAtViewController.m */,
 				19F976AC17A8E4430075DEE8 /* StaringAtViewController.xib */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
-		19F1E2FA17AA5A1300426B26 /* Login */ = {
-			isa = PBXGroup;
-			children = (
 				19DE9C0717A8EEB50012E4B2 /* LoginViewController.h */,
 				19DE9C0817A8EEB50012E4B2 /* LoginViewController.m */,
 				19DE9C0917A8EEB50012E4B2 /* LoginViewController.xib */,
+				1955B2E717B360B600BF4AD1 /* StaringAtCell.h */,
+				1955B2E817B360B600BF4AD1 /* StaringAtCell.m */,
+				1955B2EA17B360D800BF4AD1 /* StaringAtCell.xib */,
 			);
-			name = Login;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		19F1E2FB17AA5A3500426B26 /* Resources */ = {
@@ -461,6 +461,7 @@
 				193D28DF17AF8B1C00ADF6E6 /* headView.png in Resources */,
 				193D28E117AF8DB500ADF6E6 /* defaulthead@2x.png in Resources */,
 				193D28E317AF991800ADF6E6 /* setting@2x.png in Resources */,
+				1955B2EB17B360D800BF4AD1 /* StaringAtCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +476,7 @@
 				19F976A217A8E4430075DEE8 /* StaringAtAppDelegate.m in Sources */,
 				19F976AB17A8E4430075DEE8 /* StaringAtViewController.m in Sources */,
 				19DE9C0A17A8EEB50012E4B2 /* LoginViewController.m in Sources */,
+				1955B2E917B360B600BF4AD1 /* StaringAtCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
